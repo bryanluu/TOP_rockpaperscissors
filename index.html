@@ -17,5 +17,21 @@
       }
       return result;
     }
+
+    function playRound(playerSelection, computerSelection) {
+      let c2i = {"rock": 0, "paper": 1, "scissors": 2};
+      let ps = c2i[playerSelection.toLowerCase()];
+      let cs = c2i[computerSelection.toLowerCase()];
+      let result;
+      if (ps === cs) {
+        result = "Tie.";
+      } else if ((ps+1)%3 == cs) {
+        result = "You lose! " + computerSelection + " beats " + playerSelection;
+      } else {
+        result = "You win! " + playerSelection + " beats " + computerSelection;
+      }
+
+      return result;
+    }
   </script>
 </html>
