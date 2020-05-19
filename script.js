@@ -1,9 +1,17 @@
-function typeWriter(node, text, speed) {
-  for (let i=0; i<text.length; i++) {
-    node.textContent += txt.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
+function typeOnElement(node, text, speed, exit=null) {
+  node.textContent = "";
+  let i=0;
+  function type() {
+    if (i < text.length) {
+      node.textContent += text[i];
+      i++;
+      setTimeout(type, speed);
+    }
+    else if (exit) {
+      exit();
+    }
   }
+  setTimeout(type, speed);
 }
 
 function computerPlay() {
@@ -61,3 +69,24 @@ function game() {
 
   console.log("---Your final score---\n" + "Won: " + ps + ", Tie: " + tie + ", Lost: " + cs);
 }
+
+function nothing() {
+  return;
+}
+
+/**
+* Delay for a number of milliseconds
+*/
+function sleep(delay) {
+    let start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+}
+
+maintext = document.querySelector("#maintext");
+
+function typeChoose() {
+  typeOnElement(maintext, "Choose your action...", 50);
+}
+// maintext.textContent = "hello, world";
+typeOnElement(maintext, "A wild PC has appeared!", 50, function() {sleep(1000); typeChoose();});
+

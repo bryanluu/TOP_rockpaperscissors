@@ -66,6 +66,7 @@
 #attackbox {
   background-color: white;
   border: 5px ridge black;
+  opacity: 0;
 }
 
 #attacks {
