@@ -1,0 +1,61 @@
+/* BACKGROUND */
+
+#background {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#bgimg {
+  width: 100%;
+}
+
+#computer {
+  position: absolute;
+  top: 7%;
+  right: 17%;
+  width: 25%;
+}
+
+#cp {
+  position: absolute;
+  top: 25%;
+  right: 50%;
+  width: 15%;
+}
+
+#you {
+  position: absolute;
+  width: 15%;
+  bottom: 100px;
+  left: 20%;
+}
+
+/* PANEL */
+
+#panel {
+  position: absolute;
+  bottom: 0;
+  height: 100px;
+  width: 50%;
+  padding: 5px;
+  background-color: #62aba4;
+  border: 5px ridge #e43f2b;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px;
+}
+
+.text {
+  font-family: monospace;
+  font-size: 16pt;
+  text-shadow: 1px 1px 2px black;
+  padding: 10px;
+}
+
+#maintext {
+  color: white;
+}
+
+
