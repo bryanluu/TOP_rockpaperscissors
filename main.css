@@ -35,27 +35,64 @@
 
 /* PANEL */
 
-#panel {
+.panel {
   position: absolute;
   bottom: 0;
   height: 100px;
-  width: 50%;
+  width: 97%;
   padding: 5px;
-  background-color: #62aba4;
-  border: 5px ridge #e43f2b;
   border-radius: 5px;
   box-shadow: 3px 3px 5px;
+}
+
+#panel {
+  background-color: #62aba4;
+  border: 5px ridge #e43f2b;
 }
 
 .text {
   font-family: monospace;
   font-size: 16pt;
-  text-shadow: 1px 1px 2px black;
   padding: 10px;
 }
 
 #maintext {
   color: white;
+  text-shadow: 1px 1px 2px black;
 }
 
+/* ATTACK BOX */
+
+#attackbox {
+  background-color: white;
+  border: 5px ridge black;
+}
+
+#attacks {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(0, -50%);
+  width: 97%;
+}
+
+li {
+  list-style-type: none;
+  float: left;
+  color: #3c3c3c;
+}
+
+li:hover {
+  list-style-type: disclosure-closed;
+}
+
+.choice {
+  position: relative;
+  left: -20px;
+  padding-right: 10vw;
+}
+
+.choice:hover {
+  text-shadow: 0 0 1px gray;
+}
 
