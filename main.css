@@ -24,6 +24,7 @@
   top: 25%;
   right: 50%;
   width: 15%;
+  opacity: 0;
 }
 
 #you {
@@ -31,6 +32,7 @@
   width: 15%;
   bottom: 100px;
   left: 20%;
+  opacity: 0;
 }
 
 /* PANEL */
@@ -66,6 +68,8 @@
 #attackbox {
   background-color: white;
   border: 5px ridge black;
+  width: 50%;
+  right: 0;
   opacity: 0;
 }
 
@@ -95,5 +99,9 @@ li:hover {
 
 .choice:hover {
   text-shadow: 0 0 1px gray;
+}
+
+.active {
+  opacity: 1.0 !important;
 }
 

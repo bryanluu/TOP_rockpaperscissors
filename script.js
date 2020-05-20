@@ -1,18 +1,4 @@
-function typeOnElement(node, text, speed, exit=null) {
-  node.textContent = "";
-  let i=0;
-  function type() {
-    if (i < text.length) {
-      node.textContent += text[i];
-      i++;
-      setTimeout(type, speed);
-    }
-    else if (exit) {
-      exit();
-    }
-  }
-  setTimeout(type, speed);
-}
+speed = 50;
 
 function computerPlay() {
   let choice = Math.floor(Math.random()*3)
@@ -70,6 +56,7 @@ function game() {
   console.log("---Your final score---\n" + "Won: " + ps + ", Tie: " + tie + ", Lost: " + cs);
 }
 
+/* Helper function that does nothing */
 function nothing() {
   return;
 }
@@ -82,11 +69,82 @@ function sleep(delay) {
     while (new Date().getTime() < start + delay);
 }
 
-maintext = document.querySelector("#maintext");
-
-function typeChoose() {
-  typeOnElement(maintext, "Choose your action...", 50);
+function typeOnElement(node, text, speed, exit=nothing) {
+  node.textContent = "";
+  let i=0;
+  function type() {
+    if (i < text.length) {
+      node.textContent += text[i];
+      i++;
+      setTimeout(type, speed);
+    }
+    else if (exit) {
+      exit();
+    }
+  }
+  setTimeout(type, speed);
 }
-// maintext.textContent = "hello, world";
-typeOnElement(maintext, "A wild PC has appeared!", 50, function() {sleep(1000); typeChoose();});
+
+function typeChoose(end=nothing) {
+  typeOnElement(maintext, "Choose your action...", speed, end);
+}
+
+function showPlayerChoice(choice, end=nothing) {
+  playerImg.classList.add("active");
+  playerImg.setAttribute("src", choice.toLowerCase()+".png");
+  sleep(500);
+  end();
+}
+
+function showComputerChoice(choice, end=nothing) {
+  cpuImg.classList.add("active");
+  cpuImg.setAttribute("src", choice.toLowerCase()+".png");
+  sleep(500);
+  end()
+}
+
+/* Main function with logic */
+function onClick(choice, end=nothing){
+  if (attackbox.classList.contains("active")){
+    attackbox.classList.remove("active");
+    typeOnElement(maintext, "You chose " + choice + "...", speed, function(){
+      let cpuChoice = computerPlay();
+      showPlayerChoice(choice);
+      typeOnElement(maintext, "Computer chose " + cpuChoice + "...", speed, function(){
+        showComputerChoice(cpuChoice);
+        result = playRound(choice, cpuChoice);
+        if (result === 1) {
+          typeOnElement(maintext, choice + " beats " + cpuChoice, nothing);
+        } else if (result === -1) {
+          typeOnElement(maintext, cpuChoice + " beats " + choice, nothing);
+        } else {
+          typeOnElement(maintext, "Draw.", nothing);
+        }
+      });
+    });
+  }
+}
+
+function addChoose(node) {
+  node.addEventListener('click', function(e) {
+    onClick(this.textContent, nothing);
+  });
+}
+
+maintext = document.querySelector("#maintext");
+attackbox = document.querySelector("#attackbox");
+
+playerImg = document.querySelector("#you");
+cpuImg = document.querySelector("#cp");
+
+choices = document.querySelectorAll(".choice");
+
+typeOnElement(maintext, "A wild PC has appeared!", speed, function() {
+  sleep(1000);
+  typeChoose(function(){
+    attackbox.classList.add("active");
+  });
+});
+
+choices.forEach(addChoose);
 
