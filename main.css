@@ -105,3 +105,16 @@ li:hover {
   opacity: 1.0 !important;
 }
 
+/* SCORE BOX */
+#scorebox {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.score {
+  display: inline-block;
+  font-family: Helvetica;
+  padding: 10px;
+}
