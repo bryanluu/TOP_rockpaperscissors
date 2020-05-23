@@ -1,6 +1,8 @@
 /* SCOREBOX */
 #scorebox {
   background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 3px gray;
 }
 
 /* BACKGROUND */
@@ -9,6 +11,8 @@
   position: absolute;
   top: 50%;
   width: 100%;
+  max-width: 1280px;
+  height: auto;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -46,7 +50,7 @@
   position: absolute;
   bottom: 0;
   height: 100px;
-  width: 97%;
+  width: 50%;
   padding: 5px;
   border-radius: 5px;
   box-shadow: 3px 3px 5px;
